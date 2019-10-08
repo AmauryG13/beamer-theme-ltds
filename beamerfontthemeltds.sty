@@ -1,27 +1,5 @@
+\ProvidesPackage{beamerfontthemeltds}
 \mode<presentation>
-
-\RequirePackage{labels}
-
-\setbeamertemplate{background} {
-	\includegraphics[width=\paperwidth]{masks/LTDS-Masque3.jpg}
-}
-
-\defbeamertemplate*{title page}{CodeCourse}[1][]
-{
-	\usebeamercolor{title page background canvas}
-	
-	\begin{tikzpicture}[overlay,remember picture]
-		\node[inner sep=0pt, anchor=north west] at (current page.north west) {
-			\includegraphics[width=\paperwidth]{masks/LTDS-Masque1.jpg}
-		};
-	\end{tikzpicture}
-
-	\begin{table}[!ht]
-		\centering
-		
-	\end{table}
-
-}
 
 \mode
 <all>
