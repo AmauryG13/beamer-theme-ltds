@@ -1,20 +1,123 @@
+\ProvidesPackage{beamerouterthemeltds}
 \mode<presentation>
 
-\useoutertheme[height=0pt]{sidebar} 
+\DeclareOptionBeamer{debug}{\def\ltds@debug}
+\ProcessOptionsBeamer
+
+
+\useoutertheme[left, height=1.2cm, width=1.8cm, headheight=1.2cm]{sidebar}
+
+\newsavebox{\titlebox}
+\newenvironment{title-box}[1]%
+{%
+	\begin{lrbox}{\titlebox}
+		\begin{minipage}{#1}
+}{%
+		\end{minipage}
+	\end{lrbox}
+	
+	\noindent
+	\setlength{\fboxsep}{0pt}
+	\ifdefined\ltds@debug
+	\else
+		\setlength{\fboxrule}{0pt}
+	\fi
+	\fbox{\usebox{\titlebox}}
+}
+
+\newcommand{\model}[1]{%
+	\def\checkmodel{#1}
+}
+
+\newcommand{\issue}[2]{%
+	\def\insertmatter{#1}
+	\def\insertissue{#2}
+}
+
+\newcommand{\conference}[2]{%
+	\def\insertconfname{#2}
+	\def\insertconfshortname{#1}
+}
+
+\setbeamertemplate{title page}{%
+	
+	\begin{tikzpicture}[remember picture,overlay]
+		\node[anchor=south west, xshift=-0.12cm, yshift=-0.15cm] (background) at (current page.south west)
+		{%
+			\includegraphics[width=1.28\linewidth]{img/layout/title.jpg}
+		};
+	\end{tikzpicture}
+	 
+	 
+	\begin{tikzpicture}[remember picture,overlay]
+		\node[anchor=north east, yshift=-0.5cm] (matter) at (current page.north east)
+	 	{% 	
+	 		\begin{title-box}{4cm}
+		 			\scriptsize\raggedleft\insertmatter\space-\space\insertissue\\
+		 			\tiny\raggedleft \insertdate
+	 		\end{title-box}	
+	 	};
+	\end{tikzpicture}
+	
+	\begin{tikzpicture}[remember picture,overlay]
+	\node [anchor=north east, yshift=-3cm] (title)  at (current page.north east)
+	{%
+		\begin{title-box}{8.5cm}
+			\begin{center}
+				\Large \usebeamercolor[fg]{palette primary} \inserttitle
+			\end{center}
+		\end{title-box}
+	};
+	\node[anchor=north, below=0.2cm of title] (subtitle)
+	{%
+		\begin{title-box}{8cm}
+			\begin{center}
+				\large \usebeamercolor[fg]{palette quaternary} \insertsubtitle
+			\end{center}
+		\end{title-box}
+	};
+	\end{tikzpicture}
+	
+	\begin{tikzpicture}[remember picture,overlay]
+		\node[anchor=south west, xshift=1.5cm, yshift=2cm] (authors) at (current page.south west)
+		{%
+			\begin{title-box}{3cm}
+				{\tiny \usebeamercolor[fg]{palette primary} \insertauthor}
+			\end{title-box}
+		};
+	\end{tikzpicture}	 	
+	
+}
 
 \setbeamertemplate{sidebar canvas left}{}
-\setbeamertemplate{sidebar left}%
-{
-	\begin{tikzpicture}[remember picture]
-		\node[inner sep=0pt, anchor=south] at ( current page.south ) {%
-			\includegraphics[width=1.1\textwidth]{img/layout/sidebar.png}
-		};
+
+\setbeamertemplate{sidebar left}{
+	\begin{tikzpicture}[remember picture,overlay]
+	\node[anchor=south west, xshift=-0.06cm, yshift=-0.25cm] at (current page.south west)
+	{%
+		\includegraphics[height=\paperheight]{img/layout/sidebar.png}
+	};
 	\end{tikzpicture}
 }
 
-\setbeamertemplate{logo}{%
-	\includegraphics[width=\textwidth]{img/layout/logo.jpg}
+\setbeamertemplate{logo}{
+	\begin{beamercolorbox}{bg=palette secondary.fg}
+		\begin{tikzpicture}[remember picture,overlay]
+		\node[anchor=north west, xshift=0.25cm, yshift=-0.3cm] at (current page.north west)
+		{%
+			\includegraphics[width=0.8\beamer@sidebarwidth]{img/logo/ltds_fr_s.jpg}
+		};
+		\end{tikzpicture}
+	\end{beamercolorbox}
 }
+
+%\setbeamertemplate{frametitle}{
+%	\usebeamercolor[fg]{palette primary} \insertframetitle
+%}
+
+%\setbeamertemplate{framesubtitle}{
+%	\usebeamercolor[fg]{palette primary} \insertframetitle
+%}
 
 \mode
 <all>
