@@ -1,26 +1,136 @@
+\ProvidesPackage{beamercolorthemeltds}
+\usepackage{xcolor}
+
 \mode<presentation>
 
-\RequirePackage{labels}
+\definecolor{ltdsBlue}{RGB}{48,79,150}
+\definecolor{ltdsGreen}{RGB}{162,189,48}
+\definecolor{ltdsOrange}{RGB}{222,154,51}
+\definecolor{ltdsBrown}{RGB}{162,134,78}
+\definecolor{ltdsGray}{RGB}{217,217,217}
+\definecolor{ltdsDarkBlue}{RGB}{35,56,115}
 
-\setbeamertemplate{background} {
-	\includegraphics[width=\paperwidth]{masks/LTDS-Masque3.jpg}
+% ------------------ %
+% Color palettes     %
+% ------------------ %
+\setbeamercolor*{palette primary}{fg=ltdsBlue, bg=ltdsBlue}
+\setbeamercolor*{palette secondary}{fg=ltdsGray, bg=ltdsGray}
+\setbeamercolor*{palette tertiary}{fg=ltdsOrange, bg=ltdsOrange}
+\setbeamercolor*{palette quaternary}{fg=ltdsGreen, bg=ltdsGreen}
+
+
+% ------------------ %
+% Background         %
+% ------------------ %
+\setbeamercolor{background canvas}{bg=white}
+
+
+% ------------------ %
+% Global defintions  %
+% ------------------ %
+\setbeamercolor{normal text}{
+	fg=black
 }
 
-\defbeamertemplate*{title page}{CodeCourse}[1][]
-{
-	\usebeamercolor{title page background canvas}
-	
-	\begin{tikzpicture}[overlay,remember picture]
-		\node[inner sep=0pt, anchor=north west] at (current page.north west) {
-			\includegraphics[width=\paperwidth]{masks/LTDS-Masque1.jpg}
-		};
-	\end{tikzpicture}
+% ------------------ %
+% Title page         %
+% ------------------ %
+\setbeamercolor*{title}{
+	use=palette primary,
+	parent=palette primary.fg,
+	fg=palette primary.fg
+}
+\setbeamercolor*{subtitle}{
+	use=palette quaternary,
+	parent=palette quartenary.fg,
+	fg=palette quaternary.fg
+}
 
-	\begin{table}[!ht]
-		\centering
-		
-	\end{table}
+% ------------------ %
+% Logo               %
+% ------------------ %
+\setbeamercolor{logo}{
+	use=palette primary,
+	parent=palette primary.fg,
+	bg=white,
+	fg=palette primary.fg
+}
 
+% ------------------ %
+% Frame title        %
+% ------------------ %
+\setbeamercolor*{frametitle}{
+	use=palette primary,
+	parent=palette primary.fg,
+	bg=white,
+	fg=palette primary.fg
+}
+
+\setbeamercolor*{framesubtitle}{
+	use=palette quaternary,
+	fg=palette quaternary.fg
+}
+
+% ------------------ %
+% Highlighting       %
+% ------------------ %
+\setbeamercolor{structure}{
+	fg=ltdsDarkBlue
+}
+
+\setbeamercolor{alerted text}{
+	use=palette tertiary,
+	fg=palette tertiary.fg
+}
+
+% ------------------ %
+% Block environments %
+% ------------------ %
+\setbeamercolor{block title}{
+	use=block box,
+	parent=block box
+}
+\setbeamercolor{block body}{
+	use=normal text,
+	parent=normal text
+}
+\setbeamercolor{block box}{
+	use={palette primary, background canvas},
+	fg=palette primary.fg,
+	bg=background canvas.bg
+}
+
+\setbeamercolor{block title alerted}{
+	use=block box alerted,
+	parent=block box alerted
+}
+\setbeamercolor{block body alerted}{
+	use=normal text,
+	parent=normal text
+}
+\setbeamercolor{block box alerted}{
+	use={palette tertiary, background canvas},
+	fg=palette tertiary.fg,
+	bg=background canvas.bg
+}
+
+\setbeamercolor{example text}{
+	use=palette quaternary,
+	fg=palette quaternary.fg
+}
+
+\setbeamercolor{block title example}{
+	use=block box example,
+	parent=block box example
+}
+\setbeamercolor{block body example}{
+	use=normal text,
+	parent=normal text
+}
+\setbeamercolor{block box example}{
+	use={palette quaternary, background canvas},
+	fg=palette quaternary.fg,
+	bg=background canvas.bg
 }
 
 \mode
