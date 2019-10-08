@@ -1,4 +1,5 @@
 \documentclass{beamer}
+\usetheme{ltds}
 
 %% Package 
 \usepackage[utf8]{inputenc}
@@ -6,17 +7,29 @@
 
 %% Informations
 \title{There Is No Largest Prime Number}
-\date[ISPN ’80]{27th International Symposium of Prime Numbers}
-\author[Euclid]{Euclid of Alexandria \texttt{euclid@alexandria.edu}}
+\subtitle{Some subtitle}
 
-\usetheme{ltds}
+%%
+\issue{Presentation}{Project}
 
+%%
+\author[LTDS]{John\space Doe}
+\institute[LTDS]{Laboratoire de Tribologie et Dynamique des Systèmes}
+
+%%
+\date{\today}
 \begin{document}
 	
 	\begin{frame}
-	\titlepage
+		\titlepage
 	\end{frame}
 
+	\begin{frame}{Outline}
+		\tableofcontents[]
+	\end{frame}
+
+\section{Introduction}
+\section{Chapitre 1}
 	\begin{frame} 
 	\frametitle{There Is No Largest Prime Number} 
 	\framesubtitle{The proof uses \textit{reductio ad absurdum}.} 
@@ -39,3 +52,5 @@
 	\end{frame}
 
 \end{document}
+
+\date
