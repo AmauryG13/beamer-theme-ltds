@@ -1,0 +1,20 @@
+\mode<presentation>
+
+\useoutertheme[height=0pt]{sidebar} 
+
+\setbeamertemplate{sidebar canvas left}{}
+\setbeamertemplate{sidebar left}%
+{
+	\begin{tikzpicture}[remember picture]
+		\node[inner sep=0pt, anchor=south] at ( current page.south ) {%
+			\includegraphics[width=1.1\textwidth]{img/layout/sidebar.png}
+		};
+	\end{tikzpicture}
+}
+
+\setbeamertemplate{logo}{%
+	\includegraphics[width=\textwidth]{img/layout/logo.jpg}
+}
+
+\mode
+<all>
