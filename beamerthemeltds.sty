@@ -1,29 +1,33 @@
 \ProvidesPackage{beamerthemeltds}
 \mode<presentation>
 
-%%
+% ------------------ %
+% Options            %
+% ------------------ %
 \DeclareOptionBeamer{debug}{
 	\PassOptionsToPackage{debug}{beamerouterthemeltds}
 }
 \ProcessOptionsBeamer
 
-%% Requirements
+% ------------------ %
+% Packages           %
+% ------------------ %
 \RequirePackage{graphics}
 \graphicspath{img}
 
 \RequirePackage{tikz}
 \usetikzlibrary{positioning,calc}
 
+\RequirePackage{ragged2e}
 
-
-%% Settings
+% ------------------ %
+% Theme              %
+% ------------------ %
 \useoutertheme{ltds}
 \usecolortheme{ltds}
 \useinnertheme{ltds}
 \usefonttheme{ltds}
 
-%%
-\setbeamertemplate{navigation symbols}{}
 
 %% Mode
 \mode<all>
