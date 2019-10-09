@@ -4,7 +4,6 @@
 % ------------------ %
 % Block environments %
 % ------------------ %
-
 \newcommand{\ltds@block@begin}[2]{%
 	\par\vskip\medskipamount%
 	\ifx\insertblocktitle\@empty\newcommand{\yskiplength}{1.5ex}
@@ -25,7 +24,6 @@
 	\usebeamercolor{#2}
 	\usebeamerfont{beamer body}%
 }
-
 \newcommand{\ltds@block@end}[1]{%
 	\end{minipage}%
 	\egroup;
@@ -46,36 +44,31 @@
 	\end{tikzpicture}
 	\vskip\smallskipamount
 }
-
 \defbeamertemplate*{block begin}{ltds}
 {
 	\ltds@block@begin{block box}{block body}
 }
-
 \defbeamertemplate*{block end}{ltds}
 {
 	\ltds@block@end{block title}
 }
-
 \defbeamertemplate*{block example begin}{ltds}
 {
 	\ltds@block@begin{block box example}{block body example}
 }
-
 \defbeamertemplate*{block example end}{ltds}
 {
 	\ltds@block@end{block title example}
 }
-
 \defbeamertemplate*{block alerted begin}{ltds}
 {
 	\ltds@block@begin{block box alerted}{block body alerted}
 }
-
 \defbeamertemplate*{block alerted end}{ltds}
 {
 	\ltds@block@end{block title alerted}
 }
+\defbeamertemplate*{block body}{}{\justifying}
 
 \mode
 <all>
