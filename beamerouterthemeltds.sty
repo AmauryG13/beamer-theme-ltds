@@ -4,9 +4,11 @@
 \DeclareOptionBeamer{debug}{\def\ltds@debug}
 \ProcessOptionsBeamer
 
-
 \useoutertheme[left, height=1.2cm, width=1.8cm, headheight=1.2cm]{sidebar}
 
+% ------------------ %
+% Title page         %
+% ------------------ %
 \newsavebox{\titlebox}
 \newenvironment{title-box}[1]%
 {%
@@ -15,7 +17,7 @@
 }{%
 		\end{minipage}
 	\end{lrbox}
-	
+
 	\noindent
 	\setlength{\fboxsep}{0pt}
 	\ifdefined\ltds@debug
@@ -24,41 +26,37 @@
 	\fi
 	\fbox{\usebox{\titlebox}}
 }
-
 \newcommand{\model}[1]{%
 	\def\checkmodel{#1}
 }
-
 \newcommand{\issue}[2]{%
 	\def\insertmatter{#1}
 	\def\insertissue{#2}
 }
-
 \newcommand{\conference}[2]{%
 	\def\insertconfname{#2}
 	\def\insertconfshortname{#1}
 }
-
 \setbeamertemplate{title page}{%
-	
+
 	\begin{tikzpicture}[remember picture,overlay]
 		\node[anchor=south west, xshift=-0.12cm, yshift=-0.15cm] (background) at (current page.south west)
 		{%
 			\includegraphics[width=1.28\linewidth]{img/layout/title.jpg}
 		};
 	\end{tikzpicture}
-	 
-	 
+
+
 	\begin{tikzpicture}[remember picture,overlay]
 		\node[anchor=north east, yshift=-0.5cm] (matter) at (current page.north east)
-	 	{% 	
+	 	{%
 	 		\begin{title-box}{4cm}
 		 			\scriptsize\raggedleft\insertmatter\space-\space\insertissue\\
 		 			\tiny\raggedleft \insertdate
-	 		\end{title-box}	
+	 		\end{title-box}
 	 	};
 	\end{tikzpicture}
-	
+
 	\begin{tikzpicture}[remember picture,overlay]
 	\node [anchor=north east, yshift=-3cm] (title)  at (current page.north east)
 	{%
@@ -77,7 +75,7 @@
 		\end{title-box}
 	};
 	\end{tikzpicture}
-	
+
 	\begin{tikzpicture}[remember picture,overlay]
 		\node[anchor=south west, xshift=1.5cm, yshift=2cm] (authors) at (current page.south west)
 		{%
@@ -85,21 +83,47 @@
 				{\tiny \usebeamercolor[fg]{palette primary} \insertauthor}
 			\end{title-box}
 		};
-	\end{tikzpicture}	 	
-	
+	\end{tikzpicture}
 }
 
-\setbeamertemplate{sidebar canvas left}{}
+% ------------------ %
+% Table of contents  %
+% ------------------ %
+\setbeamertemplate{section in toc}{%
+	\inserttocsectionnumber.~\inserttocsection
+}
+\setbeamertemplate{subsection in toc}{%
+	\quad \footnotesize \inserttocsubsectionnumber.~\inserttocsubsection \\
+}
+\setbeamertemplate{subsubsection in toc}{%
+	\qquad \scriptsize \inserttocsubsubsectionnumber.~\inserttocsubsubsection \\
+}
 
+% ------------------ %
+% Sidebar            %
+% ------------------ %
+\setbeamertemplate{sidebar canvas left}{}
 \setbeamertemplate{sidebar left}{
 	\begin{tikzpicture}[remember picture,overlay]
 	\node[anchor=south west, xshift=-0.06cm, yshift=-0.25cm] at (current page.south west)
 	{%
 		\includegraphics[height=\paperheight]{img/layout/sidebar.png}
 	};
+	\node[anchor=south west, xshift=0.6cm] at (current page.south west)
+	{%
+		\color{white} \insertpagenumber
+	};
 	\end{tikzpicture}
 }
 
+% ------------------ %
+% Navigation symbols %
+% ------------------ %
+\setbeamertemplate{navigation symbols}{}
+
+% ------------------ %
+% Logo               %
+% ------------------ %
 \setbeamertemplate{logo}{
 	\begin{beamercolorbox}{bg=palette secondary.fg}
 		\begin{tikzpicture}[remember picture,overlay]
@@ -110,14 +134,6 @@
 		\end{tikzpicture}
 	\end{beamercolorbox}
 }
-
-%\setbeamertemplate{frametitle}{
-%	\usebeamercolor[fg]{palette primary} \insertframetitle
-%}
-
-%\setbeamertemplate{framesubtitle}{
-%	\usebeamercolor[fg]{palette primary} \insertframetitle
-%}
 
 \mode
 <all>
